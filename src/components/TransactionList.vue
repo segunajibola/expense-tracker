@@ -1,5 +1,5 @@
 <template>
-  <h3>History</h3>
+  <h3 class="border-b-2 border-style-solid border-[#bbb] pb-[10px] mt-[40px] mx-0 mb-[10px]">History</h3>
   <ul id="list" class="list">
     <li
       v-for="transaction in transactions"
