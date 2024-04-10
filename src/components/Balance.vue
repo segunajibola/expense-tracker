@@ -1,6 +1,8 @@
 <template>
-  <h4 class="m-0 uppercase">Your Balance</h4>
-  <h1 class="tracking-wider">${{ total }}</h1>
+  <div class="text-center">
+    <h4 class="m-0 uppercase text-2xl font-semibold">Your Balance</h4>
+    <h1 class="tracking-wide text-xl">${{ total }}</h1>
+  </div>
 </template>
 
 <script setup>

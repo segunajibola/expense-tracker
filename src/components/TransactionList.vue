@@ -1,10 +1,10 @@
 <template>
   <h3
-    class="border-b-2 border-style-solid border-[#bbb] pb-[10px] mt-[40px] mx-0 mb-[10px]"
+    class="border-b-2 border-style-solid border-[#bbb] text-lg pb-[10px] mt-[40px] mx-0 mb-[10px]"
   >
     History
   </h3>
-  <ul id="list" class="list-none p-0 mb-">
+  <ul id="list" class="list-none px-3">
     <li
       v-for="transaction in transactions"
       :key="transaction.id"
@@ -16,7 +16,7 @@
     >
       {{ transaction.text }} <span>${{ transaction.amount }}</span
       ><button
-        class="delete-btn focus:outline-0"
+        class="delete-btn bg-[#e74c3c] cursor-pointer border-none text-[#fff] text-xl py-.5 px-1 absolute top-[50%] left-0 opacidty-0 hover:opacity-100 focus:outline-0"
         @click="deleteTransaction(transaction.id)"
       >
         x
