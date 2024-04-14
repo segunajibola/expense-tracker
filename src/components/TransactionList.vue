@@ -9,7 +9,7 @@
       v-for="transaction in transactions"
       :key="transaction.id"
       :class="{
-        'flex bg-[#fff] text-[#333] justify-between relative p-2.5 my-2.5 border-r-[5px] border-solid': true,
+        'flex bg-[#fff] text-[#333] justify-between relative p-2.5 my-2.5 border-r-[5px] border-solid text-xl': true,
         'border-[#c0392b]': transaction.amount < 0,
         'border-[#2ecc71]': transaction.amount >= 0,
       }"

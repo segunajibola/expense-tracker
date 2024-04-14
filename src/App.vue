@@ -4,11 +4,11 @@
     <div class="w-[95%] mx-auto my-2">
       <Balance :total="total" />
       <IncomeExpenses :income="+income" :expenses="+expenses" />
+      <AddTransaction @transactionSubmitted="handleTransactionSubmitted" />
       <TransactionList
         :transactions="transactions"
         @transactionDeleted="handleTransactionDeleted"
       />
-      <AddTransaction @transactionSubmitted="handleTransactionSubmitted" />
     </div>
   </div>
 </template>
