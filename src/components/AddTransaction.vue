@@ -1,10 +1,26 @@
 <template>
   <h3
-    class="border-b-2 border-style-solid border-[#bbb] pb-[10px] text-lg mt-[40px] mx-0 mb-[10px]"
+    class="border-b-2 border-style-solid border-[#bbb] pb-[10px] text-xl mt-[40px] mx-0 mb-[10px]"
   >
     Add new transaction
   </h3>
-  <form id="form" @submit.prevent="onSubmit">
+  <form id="form" class="text-lg" @submit.prevent="onSubmit">
+    <div class="flex gap-3">
+      <div class="flex gap-1">
+        <input type="radio" id="income" name="transaction" v-model="isIncome" />
+        <label for="income">Income</label>
+      </div>
+
+      <div class="flex gap-1">
+        <input
+          type="radio"
+          id="expenses"
+          name="transaction"
+          v-model="isExpense"
+        />
+        <label for="income">Expenses</label>
+      </div>
+    </div>
     <div class="form-control">
       <label for="text" class="my-2 inline-block">Text</label>
       <input
@@ -38,10 +54,12 @@
 
 <script setup>
 import { useToast } from "vue-toastification";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 const text = ref("");
 const amount = ref("");
+const isExpense = ref(false);
+const isIncome = ref(false);
 
 // Get toast interface
 const toast = useToast();
@@ -50,15 +68,19 @@ const emit = defineEmits(["transactionSubmitted"]);
 
 const onSubmit = () => {
   if (!text.value || !amount.value) {
-    // Display a toast error message if either field is empty
-    toast.error("Both fields must be filled.");
+    toast.error("Text and Amount inputs must be filled.");
     return;
   }
-
+  if (!isExpense.value && !isIncome.value) {
+    toast.error("Please select either Income or Expenses.");
+    return;
+  }
+  console.log("amount", amount.value);
   const transactionData = {
     text: text.value,
-    amount: parseFloat(amount.value),
+    amount: parseFloat(amount.value) * (isExpense.value === "on" ? -1 : isIncome.value === "on" ? 1 : ""),
   };
+  console.log("inobj", transactionData.amount);
 
   emit("transactionSubmitted", transactionData);
 
@@ -66,4 +88,5 @@ const onSubmit = () => {
   text.value = "";
   amount.value = "";
 };
+
 </script>

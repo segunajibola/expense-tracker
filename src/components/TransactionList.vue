@@ -1,6 +1,6 @@
 <template>
   <h3
-    class="border-b-2 border-style-solid border-[#bbb] text-lg pb-[10px] mt-[40px] mx-0 mb-[10px]"
+    class="border-b-2 border-style-solid border-[#bbb] text-xl pb-[10px] mt-[40px] mx-0 mb-[10px]"
   >
     History
   </h3>
@@ -14,7 +14,7 @@
         'border-[#2ecc71]': transaction.amount >= 0,
       }"
     >
-      {{ transaction.text }} <span>${{ transaction.amount }}</span
+      {{ transaction.text }} <span>{{transaction.amount >= 0 ? "" : "-"}}${{ transaction.amount >= 0 ? transaction.amount : parseInt(transaction.amount.toString().substring(1), 10)}}</span
       ><button
         class="delete-btn bg-[#e74c3c] cursor-pointer border-none text-[#fff] text-xl py-.5 px-1 absolute top-[50%] left-0 opacidty-0 hover:opacity-100 focus:outline-0"
         @click="deleteTransaction(transaction.id)"
