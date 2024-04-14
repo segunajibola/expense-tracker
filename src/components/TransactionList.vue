@@ -1,6 +1,6 @@
 <template>
   <h3
-    class="border-b-2 border-style-solid border-[#bbb] text-xl pb-[10px] mt-[40px] mx-0 mb-[10px]"
+    class="border-b-2 border-style-solid border-[#bbb] text-2xl pb-[10px] mt-[40px] mx-0 mb-[10px]"
   >
     History
   </h3>
