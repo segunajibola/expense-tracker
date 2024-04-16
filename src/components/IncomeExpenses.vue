@@ -12,8 +12,14 @@
     </div>
     <div class="flex flex-col w-[50%] bg-slate-200 text-xl rounded-2xl">
       <h4>Expense</h4>
-      <p id="money-minus" class="tracking-wider my-1 mx-0 text-[#c0392b]">
-        {{ parsedExpenses }}
+      <p
+        id="money-minus"
+        :class="{
+          'tracking-wider my-1 mx-0': true,
+          'text-[#c0392b]': props.expenses < 0,
+        }"
+      >
+        {{ parsedExpenseFunc() }}
       </p>
     </div>
   </div>
@@ -33,15 +39,14 @@ const props = defineProps({
   },
 });
 
-// console.log(expenses)
-console.log(props.expenses, typeof props.expenses);
-let parsedExpenses
-if (isNaN(props.expenses)) {
-  parsedExpenses = "No expenses";
-  return parsedExpenses;
-} else {
-  parsedExpenses = parseInt(props.expenses.toString().substring(1), 10);
-  return `-$${parsedExpenses}`;
-}
-
+const parsedExpenseFunc = () => {
+  let parsedExpenses;
+  if (props.expenses === 0) {
+    parsedExpenses = "No expenses";
+    return parsedExpenses;
+  } else {
+    parsedExpenses = parseInt(props.expenses.toString().substring(1), 10);
+    return `-$${parsedExpenses}`;
+  }
+};
 </script>
