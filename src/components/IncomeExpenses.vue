@@ -15,8 +15,8 @@
       <p
         id="money-minus"
         :class="{
-          'tracking-wider my-1 mx-0': true,
-          'text-[#c0392b]': props.expenses < 0,
+          'tracking-wider my-1 mx-0 text-md': true,
+          'text-[#c0392b] text-xl': props.expenses < 0,
         }"
       >
         {{ parsedExpenseFunc() }}
