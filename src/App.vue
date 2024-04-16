@@ -10,6 +10,7 @@
         @transactionDeleted="handleTransactionDeleted"
       />
     </div>
+    <Footer />
   </div>
 </template>
 
